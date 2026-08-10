@@ -3,8 +3,10 @@ package rastreamento.tempo_real.model;
 import jakarta.persistence.*;
 import lombok.*;
 import rastreamento.tempo_real.enums.StatusEntregador;
+import java.util.List;
 
 @Entity
+@Table(name = "entregadores")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,6 +25,9 @@ public class EntregadorEntity {
     private String telefone;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "status_entregador", nullable = false)
     private StatusEntregador statusEntregador;
+
+    @OneToMany(mappedBy = "entregador")
+    private List<EntregaEntity> entregas;
 }

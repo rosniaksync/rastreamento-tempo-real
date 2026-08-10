@@ -1,4 +1,7 @@
 package rastreamento.tempo_real.repository;
 
-public interface EntregadorRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import rastreamento.tempo_real.model.EntregadorEntity;
+
+public interface EntregadorRepository extends JpaRepository<EntregadorEntity, Long> {
 }

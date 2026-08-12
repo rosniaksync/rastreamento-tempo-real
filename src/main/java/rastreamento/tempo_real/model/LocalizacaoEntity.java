@@ -25,6 +25,7 @@ public class LocalizacaoEntity {
     private BigDecimal longitude;
 
     @Column(name = "registrada_em", nullable = false)
+    @Builder.Default
     private LocalDateTime registradaEm = LocalDateTime.now();
 
     @ManyToOne

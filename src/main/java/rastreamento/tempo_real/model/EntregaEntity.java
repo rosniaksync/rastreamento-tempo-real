@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import rastreamento.tempo_real.enums.StatusEntrega;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,6 +21,7 @@ public class EntregaEntity {
     private Long id;
 
     @Column(name = "criada_em", nullable = false)
+    @Builder.Default
     private LocalDateTime criadaEm = LocalDateTime.now();
 
     @Column(name = "finalizada_em")
@@ -34,5 +36,6 @@ public class EntregaEntity {
     private EntregadorEntity entregador;
 
     @OneToMany(mappedBy = "entrega")
-    private List<LocalizacaoEntity> localizacoes;
+    @Builder.Default
+    private List<LocalizacaoEntity> localizacoes = new ArrayList<>();
 }

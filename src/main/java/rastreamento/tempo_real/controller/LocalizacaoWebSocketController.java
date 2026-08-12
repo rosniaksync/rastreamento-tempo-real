@@ -6,6 +6,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import rastreamento.tempo_real.dto.localizacao.LocalizacaoRequestDto;
+import rastreamento.tempo_real.dto.localizacao.LocalizacaoResponseDto;
 import rastreamento.tempo_real.service.LocalizacaoService;
 
 @Controller
@@ -14,9 +15,9 @@ public class LocalizacaoWebSocketController {
 
     private final LocalizacaoService service;
 
-    @MessageMapping("/entrega/{entregaId}/localizacao")
-    @SendTo("/topic/entrega/{entregaId}")
-    public void receberLocalizacao(@DestinationVariable Long entregaId, LocalizacaoRequestDto dto) {
-        service.cadastrar(dto);
+    @MessageMapping("/entregas/{entregaId}/localizacao")
+    @SendTo("/topic/entregas/{entregaId}")
+    public LocalizacaoResponseDto receberLocalizacao(@DestinationVariable Long entregaId, LocalizacaoRequestDto dto) {
+        return service.cadastrar(dto);
     }
 }

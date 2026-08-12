@@ -3,6 +3,8 @@ package rastreamento.tempo_real.model;
 import jakarta.persistence.*;
 import lombok.*;
 import rastreamento.tempo_real.enums.StatusEntregador;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,5 +31,6 @@ public class EntregadorEntity {
     private StatusEntregador statusEntregador;
 
     @OneToMany(mappedBy = "entregador")
-    private List<EntregaEntity> entregas;
+    @Builder.Default
+    private List<EntregaEntity> entregas = new ArrayList<>();
 }

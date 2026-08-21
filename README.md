@@ -69,7 +69,7 @@ Isso sobe o banco PostgreSQL, aplica as migrations do Flyway automaticamente e i
 
 ### Documentação da API
 
-Com a aplicação rodando, acesse:
+Com a aplicação rodando, acesse a pagina:
 
 ```
 http://localhost:8080/swagger-ui/index.html
